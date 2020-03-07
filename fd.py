@@ -74,6 +74,8 @@ def add_fast_dir(args):
     if is_valid_dir(args.dir):
         fd_dict = add_fd(fd_dict, args.fast_dir, args.dir, args.replace)
         save_fd(fd_dict)
+    else:
+        print("dir '{}' does not exist, fast dir '{}' was not created".format(args.dir, args.fast_dir))
 
 
 def go(args):
@@ -82,18 +84,18 @@ def go(args):
         if is_valid_dir(fd_dict[args.fd]):
             print('cd {}'.format(fd_dict[args.fd]))
         else:
-            print('dir {} does not exist => removing fast dir {}'.format(fd_dict[args.fd], args.fd))
+            print("dir '{}' does not exist => removing fast dir '{}'".format(fd_dict[args.fd], args.fd))
             remove_fd(args)
     else:
-        print("Fast dir '{}' does not exist. Hint: try list command for a complete list of fast dirs".format(args.fd))
+        print("Fast dir '{}' does not exist. Hint: try 'fd list' command for a complete list of fast dirs".format(args.fd))
 
 
 def remove_fd(args):
     fd_dict = read_fd()
     if fd_dict.pop(args.fd, None) is None:
-        print("fast dir {} does not exist Hint: try list command for a complete list of fast dirs".format(args.fd))
+        print("fast dir '{}' does not exist Hint: try 'fd list' command for a complete list of fast dirs".format(args.fd))
     else:
-        print("fast dir {} was successfully removed".format(args.fd))
+        print("fast dir '{}' was successfully removed".format(args.fd))
 
     save_fd(fd_dict)
 
