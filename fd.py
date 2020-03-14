@@ -65,7 +65,7 @@ def save_fd(fd_dict):
 
 def list_all(args):
     fd_dict = read_fd()
-    for key in fd_dict:
+    for key in sorted(fd_dict.keys()):
         print('{} -> "{}"'.format(key, fd_dict[key]))
 
 
@@ -104,7 +104,7 @@ def improve_args(arglist):
     result_args = arglist
     argvs = arglist[1:]
     if len(argvs) == 0:
-        result_args = [arglist[0], '-h']
+        result_args = [arglist[0], 'list']
     elif len(argvs) == 1:
         if argvs[0] not in ["add", "list", "go"]:
             result_args = [arglist[0], "go", argvs[0]]
