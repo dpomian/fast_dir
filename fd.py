@@ -6,7 +6,7 @@ import unittest
 import json
 import os.path
 import os
-# from json import JSONDecodeError
+
 
 ERRORS = {
     "malformed_fd": "Malformed fast dir file. Hint: check your ~/.fd file"
@@ -51,10 +51,10 @@ def read_fd():
         try:
             fd_dict = json.load(myfile)
             return fd_dict
-        except JSONDecodeError as e:
+        except Exception as e:
             print(error("malformed_fd"))
 
-    return None
+    return {}
 
 
 def save_fd(fd_dict):
