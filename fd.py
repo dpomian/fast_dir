@@ -183,7 +183,7 @@ class TestFastDir(unittest.TestCase):
         self.assertTrue(is_valid_dir(os.path.expanduser("~")))
 
     def test_improve_args(self):
-        self.assertEqual(["fd", "-h"], improve_args(["fd"]))
+        self.assertEqual(["fd", "list"], improve_args(["fd"]))
         self.assertEqual(["fd", "go", "abc"], improve_args(["fd", "abc"]))
         self.assertEqual(["fd", "list"], improve_args(["fd", "list"]))
         self.assertEqual(["fd", "add", "a", "b/c"], improve_args(["fd", "add", "a", "b/c"]))
