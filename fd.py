@@ -66,7 +66,7 @@ def save_fd(fd_dict):
 def list_all(args):
     fd_dict = read_fd()
     for key in sorted(fd_dict.keys()):
-        print('{} -> "{}"'.format(key, fd_dict[key]))
+        print('{} -> {}'.format(key, fd_dict[key]))
 
 
 def add_fast_dir(args):
